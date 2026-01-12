@@ -3,7 +3,7 @@ import { Product } from '@/types';
 // Mock products data - In production, this comes from the SQLite database via API
 export const mockProducts: Product[] = [
   {
-    id: 1,
+    id: '1',
     name: 'Artisan Ceramic Vase',
     description: 'Handcrafted ceramic vase with a unique organic shape. Perfect for dried flowers or as a standalone decorative piece. Each piece is individually made, ensuring no two are exactly alike.',
     price: 89.00,
@@ -15,7 +15,7 @@ export const mockProducts: Product[] = [
     createdAt: '2024-01-15',
   },
   {
-    id: 2,
+    id: '2',
     name: 'Woven Cotton Throw Blanket',
     description: 'Luxuriously soft throw blanket woven from 100% organic cotton. Features a beautiful herringbone pattern that adds texture to any space.',
     price: 120.00,
@@ -26,7 +26,7 @@ export const mockProducts: Product[] = [
     createdAt: '2024-01-14',
   },
   {
-    id: 3,
+    id: '3',
     name: 'Brass Table Lamp',
     description: 'Elegant brass table lamp with a warm, golden finish. Features a handmade linen shade that casts a soft, inviting glow.',
     price: 195.00,
@@ -37,7 +37,7 @@ export const mockProducts: Product[] = [
     createdAt: '2024-01-13',
   },
   {
-    id: 4,
+    id: '4',
     name: 'Leather Journal',
     description: 'Premium vegetable-tanned leather journal with hand-stitched binding. Contains 200 pages of acid-free, cream-colored paper.',
     price: 65.00,
@@ -48,7 +48,7 @@ export const mockProducts: Product[] = [
     createdAt: '2024-01-12',
   },
   {
-    id: 5,
+    id: '5',
     name: 'Wooden Serving Board',
     description: 'Sustainably sourced walnut serving board with organic shape. Perfect for cheese, charcuterie, or as a stunning kitchen display.',
     price: 85.00,
@@ -60,7 +60,7 @@ export const mockProducts: Product[] = [
     createdAt: '2024-01-11',
   },
   {
-    id: 6,
+    id: '6',
     name: 'Linen Cushion Cover',
     description: 'Stonewashed linen cushion cover in a beautiful sage green. Features a hidden zipper and fits standard 18x18 inch inserts.',
     price: 45.00,
@@ -71,7 +71,7 @@ export const mockProducts: Product[] = [
     createdAt: '2024-01-10',
   },
   {
-    id: 7,
+    id: '7',
     name: 'Hand-Poured Soy Candle',
     description: 'Clean-burning soy candle with essential oil blend of bergamot, cedar, and vanilla. Burns for approximately 45 hours.',
     price: 38.00,
@@ -82,7 +82,7 @@ export const mockProducts: Product[] = [
     createdAt: '2024-01-09',
   },
   {
-    id: 8,
+    id: '8',
     name: 'Minimalist Wall Clock',
     description: 'Sleek wall clock with brushed aluminum face and silent quartz movement. Diameter: 12 inches.',
     price: 75.00,

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User } from '@/types';
+import { mockApi } from '@/lib/mockApi';
 
 interface AuthState {
   user: User | null;
@@ -14,6 +15,11 @@ interface AuthContextType extends AuthState {
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
+
+// Check if we're in production (self-hosted) or Lovable preview
+const isProduction = typeof window !== 'undefined' && 
+  (window.location.hostname === 'localhost' || 
+   !window.location.hostname.includes('lovable'));
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<AuthState>({
@@ -42,20 +48,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
+      // Try real API first (for production)
+      if (isProduction) {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
 
-      if (!response.ok) {
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          setState({ user: data.user, token: data.token, isLoading: false });
+          return true;
+        }
+        return false;
+      }
+      
+      // Use mock API for Lovable preview
+      const result = await mockApi.login(email, password);
+      
+      if (!result) {
         return false;
       }
 
-      const data = await response.json();
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
-      setState({ user: data.user, token: data.token, isLoading: false });
+      localStorage.setItem('token', result.token);
+      localStorage.setItem('user', JSON.stringify(result.user));
+      setState({ user: result.user, token: result.token, isLoading: false });
       return true;
     } catch (error) {
       console.error('Login error:', error);

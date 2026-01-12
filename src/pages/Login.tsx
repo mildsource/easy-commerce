@@ -87,10 +87,6 @@ export default function Login() {
               Email: admin@artisan.com<br />
               Password: admin123
             </p>
-            <p className="text-xs text-muted-foreground mt-2">
-              Note: In production, this uses the Express API with SQLite.
-              For this demo, login is simulated on the frontend.
-            </p>
           </div>
 
           <div className="mt-6 text-center">

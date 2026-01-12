@@ -25,7 +25,7 @@ export default function Admin() {
 
   const handleAddProduct = () => {
     setEditingProduct({
-      id: Date.now(),
+      id: String(Date.now()),
       name: '',
       description: '',
       price: 0,
@@ -43,7 +43,7 @@ export default function Admin() {
     setShowForm(true);
   };
 
-  const handleDeleteProduct = (id: number) => {
+  const handleDeleteProduct = (id: string) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       setProducts((prev) => prev.filter((p) => p.id !== id));
     }

@@ -14,7 +14,7 @@ export default function ProductDetail() {
   const [addedToCart, setAddedToCart] = useState(false);
   const { addItem } = useCart();
 
-  const product = mockProducts.find((p) => p.id === Number(id));
+  const product = mockProducts.find((p) => p.id === id);
   const relatedProducts = mockProducts
     .filter((p) => p.category === product?.category && p.id !== product?.id)
     .slice(0, 4);
